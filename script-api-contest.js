@@ -79,11 +79,18 @@ function cancellaValue(event){
     barraRicerca.value = "";
 }
 
+function resettaValue(event){
+    const barraRicerca = event.currentTarget;
+    if(barraRicerca.value.length === 0)
+        barraRicerca.value = "Cerca i tuoi giochi:";
+}
+
 //Configurazione Iniziale -------------------------------------------------------------------------------------------------------------------------------------------------------
 const keyApiSuperSicura = "ca7172b5b84a49d1a3afdb1d2edd251e";
 const urlApi = "https://api.rawg.io/api/games?";
 const barraRicerca = document.querySelector('#barraRicerca');
 barraRicerca.addEventListener("click", cancellaValue);
+barraRicerca.addEventListener("blur", resettaValue);
 const form = document.querySelector('form');
 form.addEventListener('submit', ricerca);
 fetch(

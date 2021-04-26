@@ -50,7 +50,11 @@ function onJsonCasi(casiJson){
         if(item !== "All")
             date.unshift(casiJson[item].updated);
     date.sort();
-    const sezione = document.querySelector('#alert');
+    const sezione = document.querySelector('#alertNonCreato');
+    sezione.id = "alert";
+    const h4 = document.createElement('h4');
+    h4.textContent = "Prima di tornare a giocare abbiamo una battaglia da vincere!";
+    sezione.appendChild(h4);
     const casi = document.createElement('div');
     sezione.appendChild(casi);
     const infoCasi = document.createElement('p');
@@ -71,7 +75,6 @@ function onJsonCasi(casiJson){
     avanzamentoBarra.style.width = ((result.confirmed / result.population) * 100) + '%';
     barra.appendChild(avanzamentoBarra);
     fetch("https://covid-api.mmediagroup.fr/v1/vaccines?country=Italy").then(onResponse).then(onJsonVaccini);
-    const prova = 1.2;
 }
 
 function onResponse(response){
